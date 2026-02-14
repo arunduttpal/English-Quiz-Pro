@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>English Quiz Pro | Premium Exam</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-light: linear-gradient(135deg, #e0f2fe 0%, #ffffff 100%);
+      --bg-dark: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    }
+    
+    body { 
+      font-family: 'Inter', sans-serif; 
+      margin: 0;
+      padding: 0;
+      overflow: hidden; /* Strict 100vh constraint */
+      transition: background 0.3s ease;
+    }
+
+    body.light-mode {
+      background: var(--bg-light);
+      color: #1e293b;
+    }
+
+    body.dark-mode {
+      background: var(--bg-dark);
+      color: #f8fafc;
+    }
+
+    .glass {
+      backdrop-filter: blur(12px);
+      background: rgba(255, 255, 255, 0.7);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    .dark-mode .glass {
+      background: rgba(15, 23, 42, 0.8);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .option-card {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .option-card:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(14, 165, 233, 0.15);
+      border-color: #0ea5e9;
+    }
+
+    .selected-gradient {
+      background: linear-gradient(90deg, #0ea5e9 0%, #6366f1 100%);
+      color: white;
+      border-color: transparent;
+    }
+
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-in { animation: fadeIn 0.4s ease-out forwards; }
+  </style>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            premium: {
+              500: '#0ea5e9',
+              600: '#0284c7',
+              accent: '#6366f1'
+            }
+          }
+        }
+      }
+    }
+  </script>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.4",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.41.0"
+  }
+}
+</script>
+</head>
+<body class="light-mode h-screen">
+  <div id="root"></div>
+</body>
+</html>
